@@ -234,7 +234,7 @@ def drops_or_delays_in_each_bin(packet_ns,
         bin_end = bin_start + bin_width_packets
         n_drops = \
             np.sum(np.array(latencies_ms[bin_start:bin_end]) > cutoff_time_ms)
-        # Dropped packets have their latency set to zero, so we have to count them separately
+        # Dropped packets have their latency set to zero, so we have to count them separately
         n_drops += \
             np.sum(np.array(latencies_ms[bin_start:bin_end]) == 0)
 
