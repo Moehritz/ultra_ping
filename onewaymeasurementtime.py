@@ -55,8 +55,9 @@ the latencies of each packet received from the client.
 
         print("UDP server running...")
 
-        timeout_seconds = 5
+        timeout_seconds = 15
         sock_in.settimeout(timeout_seconds)
+        n_packets_expected = 0
 
         packets = []
         try:
