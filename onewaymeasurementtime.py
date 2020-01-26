@@ -58,20 +58,14 @@ the latencies of each packet received from the client.
         timeout_seconds = 5
         sock_in.settimeout(timeout_seconds)
 
-        n_packets_expected = -1
-
         packets = []
         try:
+            data = sock_in.recv(payload_len)
+            n_packets_expected = int(data)
+            print("Expecting %d packets" % n_packets_expected)
 
             while len(packets) < n_packets_expected:
                 data = sock_in.recv(payload_len)
-                if not data:
-                    break
-
-                if n_packets_expected == -1:
-                    n_packets_expected = int(data)
-                    print("Expecting %d packets" % n_packets_expected)
-                    continue
 
                 payload = data.rstrip("a")
                 (packet_n, send_time) = pickle.loads(payload)
